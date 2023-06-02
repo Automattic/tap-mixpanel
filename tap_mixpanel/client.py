@@ -238,7 +238,7 @@ class MixpanelClient(object):
             kwargs['headers']['Authorization'] = 'Basic {}'.format(
                 str(base64.urlsafe_b64encode(self.__api_secret.encode("utf-8")), "utf-8"))
             
-        with metrics.http_request_timer(endpoint) as timer:
+        with metrics.http_request_timer(url) as timer:
             response = self.perform_request(method=method,
                                             url=url,
                                             params=params,
@@ -287,7 +287,7 @@ class MixpanelClient(object):
             kwargs['headers']['Authorization'] = 'Basic {}'.format(
                 str(base64.urlsafe_b64encode(self.__api_secret.encode("utf-8")), "utf-8"))
             
-        with metrics.http_request_timer(endpoint) as timer:
+        with metrics.http_request_timer(url) as timer:
             response = self.perform_request(method=method,
                                         url=url,
                                         params=params,
