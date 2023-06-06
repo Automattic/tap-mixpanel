@@ -285,6 +285,7 @@ def sync_endpoint(client, #pylint: disable=too-many-branches
                     time_extracted = utils.now()
                     transformed_data = []
                     for record in data:
+                        LOGGER.info(record)
                         if record and str(record) != '':
                             # transform reocord and append to transformed_data array
                             transformed_record = transform_record(record, stream_name,
