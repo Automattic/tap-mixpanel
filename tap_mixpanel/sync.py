@@ -48,7 +48,11 @@ def write_bookmark(state, stream, value):
         state['bookmarks'] = {}
     state['bookmarks'][stream] = value
     LOGGER.info('Write state for stream: {}, value: {}'.format(stream, value))
-    if state:
+    write_state(state)
+
+def write_state(state):
+    if state and 'bookmarks' in state:
+        # Only write state if it is not empty.
         singer.write_state(state)
 
 
@@ -511,8 +515,7 @@ def update_currently_syncing(state, stream_name):
         del state['currently_syncing']
     else:
         singer.set_currently_syncing(state, stream_name)
-    if state:
-        singer.write_state(state)
+    write_state(state)
 
 
 def sync(client, config, catalog, state, start_date):
