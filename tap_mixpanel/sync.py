@@ -48,7 +48,8 @@ def write_bookmark(state, stream, value):
         state['bookmarks'] = {}
     state['bookmarks'][stream] = value
     LOGGER.info('Write state for stream: {}, value: {}'.format(stream, value))
-    singer.write_state(state)
+    if state:
+        singer.write_state(state)
 
 
 def transform_datetime(this_dttm):
@@ -510,7 +511,8 @@ def update_currently_syncing(state, stream_name):
         del state['currently_syncing']
     else:
         singer.set_currently_syncing(state, stream_name)
-    singer.write_state(state)
+    if state:
+        singer.write_state(state)
 
 
 def sync(client, config, catalog, state, start_date):
