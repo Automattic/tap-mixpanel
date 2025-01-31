@@ -511,6 +511,8 @@ def update_currently_syncing(state, stream_name):
         del state['currently_syncing']
     else:
         singer.set_currently_syncing(state, stream_name)
+    if state:
+        singer.write_state(state)
 
 
 def sync(client, config, catalog, state, start_date):
