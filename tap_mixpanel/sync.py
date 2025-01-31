@@ -51,7 +51,7 @@ def write_bookmark(state, stream, value):
     write_state(state)
 
 def write_state(state):
-    if state and 'bookmarks' in state:
+    if state:
         # Only write state if it is not empty.
         singer.write_state(state)
 
