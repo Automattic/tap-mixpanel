@@ -509,7 +509,6 @@ def sync_endpoint(client, #pylint: disable=too-many-branches
 def update_currently_syncing(state, stream_name):
     if (stream_name is None) and ('currently_syncing' in state):
         del state['currently_syncing']
-        singer.write_state(state)
     else:
         singer.set_currently_syncing(state, stream_name)
     if state:
