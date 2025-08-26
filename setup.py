@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='pipelinewise-tap-mixpanel',
-      version='1.2.17',
+      version='1.2.18',
       description='Singer.io tap for extracting data from the mixpanel API - PipelineWise compatible',
       long_description=long_description,
       long_description_content_type='text/markdown',
@@ -18,7 +18,7 @@ setup(name='pipelinewise-tap-mixpanel',
       py_modules=['tap_mixpanel'],
       install_requires=[
           'backoff==1.8.0',
-          'requests==2.22.0',
+          'requests==2.32.5',
           'pipelinewise-singer-python==1.2.0',
           'jsonlines==1.2.0'
       ],
